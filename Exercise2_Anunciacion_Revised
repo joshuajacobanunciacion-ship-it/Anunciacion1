@@ -1,0 +1,118 @@
+namespace Quiz
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {   //Student Information
+            Console.WriteLine("Enter your name:");
+            string name = Console.ReadLine();
+            Console.WriteLine("Hello!" + name);
+            Console.WriteLine("Enter your course name:");
+            string courseName = Console.ReadLine();
+            Console.WriteLine("You are enrolled in the course: " + courseName);
+            Console.WriteLine("Enter your year level:");
+            string yearLevel = Console.ReadLine();
+            Console.WriteLine("Your level is: " + yearLevel);
+            Console.WriteLine("Enter your section:");
+            string section = Console.ReadLine();
+            Console.WriteLine("Your section is: " + section);
+
+            //Basic Calculator
+            Console.WriteLine("Enter the first number: ");
+            int firstNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the second number: ");
+            int secondNumber = int.Parse(Console.ReadLine());
+            int sum = firstNumber + secondNumber;
+            Console.WriteLine("The sum of the two numbers is: " + sum);
+            int difference = firstNumber - secondNumber;
+            Console.WriteLine("The difference of the two numbers is: " + difference);
+            int product = firstNumber * secondNumber;
+            Console.WriteLine("The product of the two numbers is: " + product);
+            int quotient = firstNumber / secondNumber;
+            Console.WriteLine("The quotient of the two numbers is: " + quotient);
+
+            //Area of a rectangle
+            Console.WriteLine("Enter the length number");
+            int lengthInput = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the width number");
+            int widthInput = int.Parse(Console.ReadLine());
+            int area = lengthInput * widthInput;
+            Console.WriteLine("The area of the rectangle is: " + area);
+
+            //Student Grade
+            Console.WriteLine("Enter your Prelim grade:");
+            int prelimGrade = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter your Midterm grade:");
+            int midtermGrade = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter your Final grade:");
+            int finalGrade = int.Parse(Console.ReadLine());
+            int averageGrade = (prelimGrade + midtermGrade + finalGrade) / 3;
+            Console.WriteLine("Your average grade is: " + averageGrade);
+
+            //Boolean Input
+            Console.WriteLine("Are you a student? (true/false)");
+            Boolean isStudent = bool.Parse(Console.ReadLine());
+            Console.WriteLine("Student status: " + isStudent);
+
+            //Age Verification
+            Console.WriteLine("What is your age?");
+            int age = int.Parse(Console.ReadLine());
+            int minimumAge = 18;
+            int maximumAge = 99;
+            if (age >= minimumAge && age <= maximumAge)
+            {
+                Console.WriteLine("You are within the acceptable age range.");
+            }
+            else
+            {
+                Console.WriteLine("You are not within the acceptable age range.");
+            }
+
+            //Full name
+            Console.WriteLine("Enter your first name:");
+            Console.WriteLine("Enter your last name:");
+            string firstName = Console.ReadLine();
+            string lastName = Console.ReadLine();
+            Console.WriteLine( firstName + " " + lastName );
+
+            //Shopping Calculator
+            Console.WriteLine("Enter the price of the item:");
+            Console.WriteLine("Enter the name of the item:");
+            Console.WriteLine("Enter the quantity of the item:");
+            int price = int.Parse(Console.ReadLine());
+            string itemName = Console.ReadLine();
+            int quantity = int.Parse(Console.ReadLine());
+            int totalCost = price * quantity;
+            Console.WriteLine("The total cost of " + quantity + " " + itemName + "(s) is: " + totalCost);
+
+            //Salary Calculator
+            Console.WriteLine("Enter your Employee Name:");
+            string employeeName = Console.ReadLine();
+            Console.WriteLine("Enter your hourly wage:");
+            double hourlyWage = double.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the number of hours worked:");
+            double hoursWorked = double.Parse(Console.ReadLine());
+            double salary = hourlyWage * hoursWorked;
+            Console.WriteLine("The salary of " + employeeName + " is: " + salary);
+
+            //Mini Student Information System
+            Console.WriteLine("Enter your Student Name:");
+            string studentName = Console.ReadLine();
+            Console.WriteLine("Enter your Course:");
+            string studentCourse = Console.ReadLine();
+            Console.WriteLine("Enter your Year Level:");
+            string studentYearLevel = Console.ReadLine();
+            Console.WriteLine("Enter your Prelim grade:");
+            int firstGrade = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter your Midterm grade:");
+            int secondGrade = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter your Final grade:");
+            int thirdGrade = int.Parse(Console.ReadLine());
+            int aveGrade = (firstGrade + secondGrade + thirdGrade) / 3;
+            Console.WriteLine("Your average grade is: " + aveGrade);
+        }
+    }
+}
+
+
+
