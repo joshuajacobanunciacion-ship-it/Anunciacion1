@@ -1,0 +1,45 @@
+namespace Quiz
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            //Business Information System
+            Console.WriteLine("Enter name of Business Owner: ");
+            string businessOwnerName = Console.ReadLine();
+            Console.WriteLine("Enter name of department: ");
+            string departmentName = Console.ReadLine(); 
+            Console.WriteLine("Enter the number of employees: ");
+            int numEmployees = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= numEmployees; i++)
+            {           
+                Console.WriteLine("Enter Employee #" + i + " Name:");
+                string employeeName = Console.ReadLine();
+                Console.WriteLine("Enter the hourly wage:");
+                double hourlyWage = Convert.ToDouble(Console.ReadLine());
+                Console.WriteLine("Enter the number of hours worked:");
+                double hoursWorked = Convert.ToDouble(Console.ReadLine());
+                double salary = hourlyWage * hoursWorked;
+                Console.WriteLine("The salary of " + employeeName + " is: " + salary);
+            }
+            Console.WriteLine("Welcome to " + departmentName + " Department, " + businessOwnerName + "! The total number of employees is: " + numEmployees);
+
+            //Loan Calculator
+            Console.WriteLine("Enter Loan Amount: ");
+            int loanAmount = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter Annual Interest Rate: ");
+            double annualInterestRate = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter number of years: ");   
+            int numberOfYears = Convert.ToInt32(Console.ReadLine());
+            double interest = (loanAmount * annualInterestRate * numberOfYears);
+            double totalAmount = loanAmount + interest;
+            double monthlyPayment = totalAmount / (numberOfYears * 12);
+            Console.WriteLine("Your Loan Amount is: " + loanAmount);
+            Console.WriteLine("Your Annual Interest Rate is: " + annualInterestRate);
+            Console.WriteLine("Your Monthly Payment is: " + monthlyPayment);
+
+
+
+        }
+    }
+}
