@@ -1,0 +1,39 @@
+Data Structures, Algorithms, and the Foundations of Efficient Computing
+Data Structures and Algorithms
+Every program has two major functions: it keeps data and does something with that data. Data structure is a way of organizing and keeping data in a computer, so that it could be used and changed efficiently. Arrays, linked lists, stacks, queues, trees, and graphs are some of the examples of a data structure.
+
+An algorithm is a limited number of steps in order to solve a problem or perform a task, like sorting names or finding records in a database.
+
+The two things are closely connected. The data structure choice influences the algorithm types and their efficiency; the algorithm can be considered effective only through the data structure. Hence, studying both together makes programming good as efficient, quick and building the programs that use as little memory as possible.
+Linear Data Structures 
+A linear data structure organizes its elements in a linear fashion, wherein every element has one predecessor and one successor (except the first and the last). The visiting of each item is done in turn. Types of data structure under this category include arrays, linked lists, stacks and queues. Due to their linear simplicity, these structures are quite easy to understand and implement, thus serving as a foundation for more complex structures. 
+
+One-Dimensional Array 
+One-dimensional array is the most common linearly structured data. It has elements belonging to the same data type that are placed in the continuous memory. Each element is accessed through an index. For instance, in Java, int[] scores = new int[5]; creates an array that can store five integers, while an index scores[2] accesses the third integer. 
+
+The popularity of arrays is due to their direct access: since the elements are kept next to another in memory, the computer can find out the location of anybody's element just through the index. However, their main drawback is that an array has a predetermined size.
+
+
+The Big O Notation 
+Merely being aware of whether or not an algorithm works is not good enough; we should also know how effective it is as the input value grows. Big O notation is a mathematical representation of an algorithm's efficiency, that is, the amount of time taken or memory used, in terms of the input size n. It considers only the worst-case growing speed and ignores constants and terms of lower order than the first, so that expression like 3n + 10 can be classified just as O(n). Through this representation, the efficiency of the algorithms can be compared without taking into account aspects like used programming language or hardware.
+
+The most common classes are given below in descending order of their growth speed:
+O(1), constant time: the running time does not depend on input size, such as accessing an array element by index.
+O(log n), logarithmic time: the problem size is cut down at each step, as in binary search.
+O(n), linear time: the work grows in direct proportion to the input, as in scanning a whole list.
+O(n log n): typical of efficient sorting algorithms like merge sort.
+O(n²), quadratic time: common in algorithms with nested loops, like bubble sort.
+
+The practical difference is huge. With one million items, an O(n) algorithm may need about a million steps, while an O(log n) algorithm needs only about twenty. That gap is why Big O is central to algorithm design.
+
+Basic Searching Algorithms 
+Searching, which refers to the computation of locating an item in a dataset, is one of the most frequent tasks in computing. Certain standard techniques include linear and binary search.
+
+Linear Search 
+The linear search, which is known to be the sequential search too, involves inspecting of items one after the other, beginning with the very first one, and continuing until the desired item is found or the end of the collection is reached. The biggest advantage of this method is its effectiveness as it can be applied on any collection of items, sorted or unsorted. The major disadvantage, on the other hand, is its slow performance. In the best-case scenario, the searched object may be found in the first position, giving the time complexity O(1). In the worst-case scenario, the desired object is either being the last item in the list or not being there at all, and hence all the items have to be checked, giving the time complexity O(n). This makes the technique applicable for small collections or random lists but inefficient in the case of larger ones.
+
+
+Binary Search 
+Binary search is faster than other methods of searching but only useful if the data is sorted. The search starts with finding the middle element and comparing it to the search key. If the two match, the search is over. If the key is smaller, the search continues in the lower half of the data; conversely, if the key is larger, the search remains in the upper half. Because each comparison eliminates half of the remaining elements, the search process becomes very rapid. Thus, the complexity of the search is O(log n), which means that a sorted list of 1,000,000 items will have to be compared about 20 times at most.
+ 
+To conclude, data structures and algorithms serves as the ground for computer science. Data structures such as one-dimensional arrays serves as a basis. While the principle of Big O notation gives us a tool for measuring efficiency. The examples of linear and binary search clearly shows the effectiveness of the algorithm employed with the data structure.
