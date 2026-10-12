@@ -1,0 +1,343 @@
+namespace BigOProj
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+
+            button1.Click += button1_Click;
+            button2.Click += button2_Click;
+            button3.Click += button3_Click;
+            button4.Click += button4_Click;
+            button5.Click += button5_Click;
+            button6.Click += button6_Click;
+            button7.Click += button7_Click;
+            button8.Click += button8_Click;
+            button9.Click += button9_Click;
+            button10.Click += button10_Click;
+            button11.Click += button11_Click;
+            button12.Click += button12_Click;
+            button13.Click += button13_Click;
+            button14.Click += button14_Click;
+            button15.Click += button15_Click;
+        }
+
+        // Will turn "5, 3, 8" into a list of numbers. Returns if the input is invalid.
+        private List<int> ReadNumbers(string text)
+        {
+            List<int> list = new List<int>();
+            foreach (string part in text.Split(','))
+            {
+                int n;
+                if (!int.TryParse(part.Trim(), out n)) return null;
+                list.Add(n);
+            }
+            return list;
+        }
+
+        //  O(1)
+
+        // App 1: get an item by its index
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int[] numbers = { 10, 20, 30, 40, 50 };
+            int i;
+            if (!int.TryParse(textBox1.Text, out i) || i < 0 || i >= numbers.Length)
+            {
+                label1.Text = "Enter an index from 0 to 4";
+                return;
+            }
+            label1.Text = "numbers[" + i + "] = " + numbers[i];
+        }
+
+        // App 2: even or odd
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox2.Text, out n))
+            {
+                label2.Text = "Enter a whole number";
+                return;
+            }
+            label2.Text = (n % 2 == 0) ? n + " is EVEN" : n + " is ODD";
+        }
+
+        // App 3: dictionary lookup: price checker
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, int> prices = new Dictionary<string, int>();
+            prices["apple"] = 10;
+            prices["banana"] = 5;
+            prices["mango"] = 20;
+
+            string key = textBox3.Text.Trim().ToLower();
+            if (prices.ContainsKey(key))
+                label3.Text = key + " costs ₱" + prices[key];
+            else
+                label3.Text = "Try: apple, banana, mango";
+        }
+
+        //  O(log n)
+
+        // App 4: binary search
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int[] sorted = { 2, 5, 8, 12, 16, 23, 38, 56, 72, 91 };
+            int target;
+            if (!int.TryParse(textBox4.Text, out target))
+            {
+                label4.Text = "Enter a whole number";
+                return;
+            }
+
+            int steps;
+            int index = BinarySearch(sorted, target, out steps);
+                if (index == -1)
+                label4.Text = target + " not found (" + steps + " steps)";
+                else
+                label4.Text = target + " found at index " + index + " (" + steps + " steps)";
+        }
+
+        private int BinarySearch(int[] arr, int target, out int steps)
+        {
+            int low = 0, high = arr.Length - 1;
+            steps = 0;
+            while (low <= high)
+            {
+                steps++;
+                int mid = (low + high) / 2;
+                if (arr[mid] == target) return mid;
+                    if (arr[mid] < target) low = mid + 1;
+                    else high = mid - 1;
+            }
+            return -1;
+        }
+
+        // App 5: how many times can a number be halved until 1?
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox5.Text, out n) || n < 1)
+            {
+                label5.Text = "Enter a number 1 or higher";
+                return;
+            }
+
+            int original = n;
+            int steps = 0;
+            while (n > 1)
+            {
+                n = n / 2;
+                steps++;
+            }
+            label5.Text = original + " halved to 1 in " + steps + " steps";
+        }
+
+        // App 6: guess the secret number (1-100) by halving
+        private void button6_Click(object sender, EventArgs e)
+        {
+            int secret;
+            if (!int.TryParse(textBox6.Text, out secret) || secret < 1 || secret > 100)
+            {
+                label6.Text = "Enter a number from 1 to 100";
+                return;
+            }
+
+            int low = 1, high = 100, guesses = 0;
+            while (low <= high)
+            {
+                int mid = (low + high) / 2;
+                guesses++;
+                if (mid == secret) break;
+                    if (mid < secret) low = mid + 1;
+                    else high = mid - 1;
+            }
+            label6.Text = "Found " + secret + " in " + guesses + " guesses";
+        }
+
+        //  O(n)
+
+        // App 7: sum of numbers
+        private void button7_Click(object sender, EventArgs e)
+        {
+            List<int> numbers = ReadNumbers(textBox7.Text);
+            if (numbers == null)
+            {
+                label7.Text = "Enter numbers like: 4, 9, 2";
+                return;
+            }
+
+            int sum = 0;
+            foreach (int num in numbers)
+            {
+                sum += num;
+            }
+            label7.Text = "Sum = " + sum;
+        }
+
+        // App 8: find the biggest number
+        private void button8_Click(object sender, EventArgs e)
+        {
+            List<int> numbers = ReadNumbers(textBox8.Text);
+            if (numbers == null)
+            {
+                label8.Text = "Enter numbers like: 4, 9, 2";
+                return;
+            }
+
+            int max = numbers[0];
+            foreach (int num in numbers)
+            {
+                if (num > max) max = num;
+            }
+            label8.Text = "Biggest = " + max;
+        }
+
+        // App 9: count the vowels in a text
+        private void button9_Click(object sender, EventArgs e)
+        {
+            int count = 0;
+            foreach (char c in textBox9.Text.ToLower())
+            {
+                if ("aeiou".IndexOf(c) >= 0) count++;
+            }
+            label9.Text = "Vowels = " + count;
+        }
+
+        //  O(n²)
+
+        // App 10: multiplication table (n x n)
+        private void button10_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox10.Text, out n) || n < 1 || n > 9)
+            {
+                label10.Text = "Enter a number from 1 to 9";
+                return;
+            }
+
+            string table = "";
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= n; j++)
+                {
+                    table += (i * j).ToString().PadLeft(4);
+                }
+                table += "\n";
+            }
+            label10.Text = table + "\n" + (n * n) + " steps";
+        }
+
+        // App 11: bubble sort
+        private void button11_Click(object sender, EventArgs e)
+        {
+            List<int> list = ReadNumbers(textBox11.Text);
+            if (list == null)
+            {
+                label11.Text = "Enter numbers like: 5, 3, 8, 1";
+                return;
+            }
+
+            int[] arr = list.ToArray();
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                for (int j = 0; j < arr.Length - 1 - i; j++)
+                {
+                    if (arr[j] > arr[j + 1])
+                    {
+                        int temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            label11.Text = "Sorted: " + string.Join(", ", arr);
+        }
+
+        // App 12: check for duplicates
+        private void button12_Click(object sender, EventArgs e)
+        {
+            List<int> list = ReadNumbers(textBox12.Text);
+            if (list == null)
+            {
+                label12.Text = "Enter numbers like: 1, 2, 3, 2";
+                return;
+            }
+
+            bool hasDuplicate = false;
+            for (int i = 0; i < list.Count; i++)
+            {
+                for (int j = i + 1; j < list.Count; j++)
+                {
+                    if (list[i] == list[j]) hasDuplicate = true;
+                }
+            }
+            label12.Text = hasDuplicate ? "Has duplicates" : "No duplicates";
+        }
+
+        //  O(2^n)
+
+        // App 13: recursive Fibonacci
+        private void button13_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox13.Text, out n) || n < 0 || n > 35)
+            {
+                label13.Text = "Enter a number from 0 to 35";
+                return;
+            }
+            label13.Text = "Fibonacci(" + n + ") = " + Fibonacci(n);
+        }
+
+        private int Fibonacci(int n)
+        {
+            if (n <= 1) return n;
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+        }
+
+        // App 14: list all binary strings of a given length
+        private void button14_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox14.Text, out n) || n < 1 || n > 4)
+            {
+                label14.Text = "Enter a number from 1 to 4";
+                return;
+            }
+
+            List<string> results = new List<string>();
+            ListBinary("", n, results);
+            label14.Text = string.Join(", ", results) + "\nTotal = " + results.Count;
+        }
+
+        private void ListBinary(string current, int length, List<string> results)
+        {
+            if (current.Length == length)
+            {
+                results.Add(current);
+                return;
+            }
+            ListBinary(current + "0", length, results);   // choice 1
+            ListBinary(current + "1", length, results);   // choice 2
+        }
+
+        // App 15: Tower of Hanoi - number of moves
+        private void button15_Click(object sender, EventArgs e)
+        {
+            int n;
+            if (!int.TryParse(textBox15.Text, out n) || n < 1 || n > 25)
+            {
+                label15.Text = "Enter a number from 1 to 25";
+                return;
+            }
+            label15.Text = n + " disks need " + Hanoi(n) + " moves";
+        }
+
+        private int Hanoi(int n)
+        {
+            if (n == 0) return 0;
+            return Hanoi(n - 1) + 1 + Hanoi(n - 1);
+        }
+    }
+}
